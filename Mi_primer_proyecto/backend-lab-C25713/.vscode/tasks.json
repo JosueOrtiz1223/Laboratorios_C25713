@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "sqlproj: Build DATABASE Countries",
+			"type": "process",
+			"command": "dotnet",
+			"args": [
+				"build",
+				"/Users/josueortizcabrera/Desktop/Laboratorios_C25713/Mi_primer_proyecto/backend-lab-C25713/DATABASE Countries/DATABASE Countries.sqlproj"
+			],
+			"problemMatcher": "$sqlproj-problem-matcher",
+			"isBackground": true,
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "Builds the DATABASE Countries SQL project"
+		}
+	]
+}
