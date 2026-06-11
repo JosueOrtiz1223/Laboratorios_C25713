@@ -18,20 +18,21 @@ public class CountryRepository
     public List<CountryModel> GetCountries()
     {
         using var connection = new SqlConnection(_connectionString);
-        string query = "SELECT * FROM dbo.Country";
+        string query = @"SELECT Id, Name, Continent, OfficialLanguage AS Language
+                         FROM dbo.Country";
         return connection.Query<CountryModel>(query).ToList();
     }
 
     public bool CreateCountry(CountryModel country)
     {
     using var connection = new SqlConnection(_connectionString);
-    var query = @"INSERT INTO [dbo].[Country] ([Name],[Language],[Continet])
-                VALUES(@Name, @Language, @Continet)";
+    var query = @"INSERT INTO [dbo].[Country] ([Name],[Continent],[OfficialLanguage])
+                VALUES(@Name, @Continent, @Language)";
     var affectedRows = connection.Execute(query, new
     {
     Name = country.Name,
-    Language = country.Language,
-    Continet = country.Continet
+    Continent = country.Continent,
+    Language = country.Language
     });
     return affectedRows >= 1;
     }
